@@ -1,5 +1,6 @@
 package passport;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class PassportList {
@@ -10,7 +11,12 @@ public class PassportList {
     }
 
     public void add(Passport passport) {
-        passports.add(passport);
+        Passport ex = get(passport.getNumber());
+        if (ex != null) {
+            passports.remove(ex);
+            passports.add(passport);
+
+        }
     }
 
     public Passport get(String number) {

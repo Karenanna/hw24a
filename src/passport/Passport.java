@@ -1,6 +1,7 @@
 package passport;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Passport {
     private String number;
@@ -60,5 +61,18 @@ public class Passport {
     @Override
     public String toString() {
         return number + ", " + surname + " " + patronymic + " " + birthday;
+          }
+
+           @Override
+          public boolean equals(Object o) {
+               if (this == o) return true;
+              if (o == null || getClass() != o.getClass()) return false;
+              Passport passport = (Passport) o;
+               return number.equals(passport.number) && Objects.equals(name, passport.name) && Objects.equals(surname, passport.surname) && Objects.equals(patronymic, passport.patronymic) && Objects.equals(birthday, passport.birthday);
+          }
+
+         @Override
+          public int hashCode() {
+              return Objects.hash(number);
     }
 }
